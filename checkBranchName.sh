@@ -46,6 +46,7 @@ echo "\
 | `issus/*`    | Bug修复分支    | 修复Issus上的问题, 一般加上Issus ID   |
 | `jira/*`     | Bug修复分支    | 修复Jira上的问题, 一般加上Jira  ID    |
 | `release/*`  | 发布分支       | 发布版本用的分支                      |
+| `patch/*`    | 补丁          | 补丁                                 |
 '"
 ${_GITLAB_PING_USER:-}"
 }
@@ -59,7 +60,7 @@ exit 1
 }
 
 OUTPUT_FILE='branchname.output'
-[[ $BRANCH_NAME =~ ^(feature|hotfix|bugfix|issus|jira|release)[-/][a-zA-Z0-9] ]] || {
+[[ $BRANCH_NAME =~ ^(feature|hotfix|bugfix|issus|jira|release|patch)[-/][a-zA-Z0-9] ]] || {
   f_errormsg  | tee ${OUTPUT_FILE}
   f_copyright | tee -a ${OUTPUT_FILE}
   exit 1
